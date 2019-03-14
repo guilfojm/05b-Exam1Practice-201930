@@ -9,8 +9,8 @@ These problems illustrate concepts that previous problems have not emphasized:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Justin Guilfoyle.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 import testing_helper
@@ -21,11 +21,11 @@ def main():
     """ Calls the   TEST   functions in this module. """
     run_test_problem0a()
     run_test_problem0b()
-    run_test_problem0c()
+    #run_test_problem0c()
 
 
 ###############################################################################
-# TODO: 2.  READ the green doc-string for the:
+# DONE: 2.  READ the green doc-string for the:
 #   - is_prime
 #   - sum_of_digits
 # functions defined below.  You do NOT need to understand their
@@ -189,7 +189,7 @@ def problem0a(n):
            since (2 + 4 + 6) is 12, which is NOT odd.
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
@@ -206,6 +206,13 @@ def problem0a(n):
     #        Simply try a few examples to convince yourself of this.
     #        ASK FOR HELP if you do not understand this hint.
     # -------------------------------------------------------------------------
+
+    x = sum_of_digits(n)
+    if x % 2 == 0:
+        return False
+    else:
+        return True
+
 
 
 def run_test_problem0b():
@@ -262,7 +269,7 @@ def problem0b(n):
            since there are 46 primes between 2 and 200.
      """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     ###########################################################################
@@ -271,39 +278,48 @@ def problem0b(n):
     #    **  use (call) the   is_prime   function that is DEFINED ABOVE.
     ###########################################################################
     # ------------------------------------------------------------------
+    count = 0
+    for k in range(n - 1):
+        x = is_prime(k + 2)
+        if x:
+            count = count + 1
+        else:
+            count = count
+    return count
 
 
-def run_test_problem0c():
-    """ Tests the   problem0c  function. """
-    print()
-    print('--------------------------------------------------')
-    print('Testing the  problem0c  function:')
-    print('  See the graphics windows that pop up.')
-    print('--------------------------------------------------')
 
-    # TWO tests on ONE window.
-    title = 'Tests 1 & 2 of problem0c: blue circle + 6 circles;'
-    title += ' then green circle + 3 circles'
-    window1 = rg.RoseWindow(650, 300, title)
-
-    circle1 = rg.Circle(rg.Point(100, 50), 30)
-    circle1.fill_color = 'blue'
-    problem0c(circle1, 6, window1)
-    window1.continue_on_mouse_click()
-
-    circle2 = rg.Circle(rg.Point(75, 200), 75)
-    circle2.fill_color = 'green'
-    problem0c(circle2, 3, window1)
-    window1.close_on_mouse_click()
-
-    # A third test on ANOTHER window.
-    title = 'Test 3 of problem0c:  red circle + 10 circles'
-    window2 = rg.RoseWindow(600, 200, title)
-
-    circle3 = rg.Circle(rg.Point(50, 50), 20)
-    circle3.fill_color = 'red'
-    problem0c(circle3, 10, window2)
-    window2.close_on_mouse_click()
+# def run_test_problem0c():
+#     """ Tests the   problem0c  function. """
+#     print()
+#     print('--------------------------------------------------')
+#     print('Testing the  problem0c  function:')
+#     print('  See the graphics windows that pop up.')
+#     print('--------------------------------------------------')
+#
+#     # TWO tests on ONE window.
+#     title = 'Tests 1 & 2 of problem0c: blue circle + 6 circles;'
+#     title += ' then green circle + 3 circles'
+#     window1 = rg.RoseWindow(650, 300, title)
+#
+#     circle1 = rg.Circle(rg.Point(100, 50), 30)
+#     circle1.fill_color = 'blue'
+#     problem0c(circle1, 6, window1)
+#     window1.continue_on_mouse_click()
+#
+#     circle2 = rg.Circle(rg.Point(75, 200), 75)
+#     circle2.fill_color = 'green'
+#     problem0c(circle2, 3, window1)
+#     window1.close_on_mouse_click()
+#
+#     # A third test on ANOTHER window.
+#     title = 'Test 3 of problem0c:  red circle + 10 circles'
+#     window2 = rg.RoseWindow(600, 200, title)
+#
+#     circle3 = rg.Circle(rg.Point(50, 50), 20)
+#     circle3.fill_color = 'red'
+#     problem0c(circle3, 10, window2)
+#     window2.close_on_mouse_click()
 
 
 def problem0c(circle, n, window):
@@ -338,7 +354,7 @@ def problem0c(circle, n, window):
     #   renders with a half-second pause after rendering.
     ###########################################################################
     # -------------------------------------------------------------------------
-
+    window.render(0.5)
 
 ###############################################################################
 # Our tests use the following to print error messages in red.
