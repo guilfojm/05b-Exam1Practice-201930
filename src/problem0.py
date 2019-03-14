@@ -21,7 +21,7 @@ def main():
     """ Calls the   TEST   functions in this module. """
     run_test_problem0a()
     run_test_problem0b()
-    #run_test_problem0c()
+    run_test_problem0c()
 
 
 ###############################################################################
@@ -289,38 +289,37 @@ def problem0b(n):
 
 
 
-# def run_test_problem0c():
-#     """ Tests the   problem0c  function. """
-#     print()
-#     print('--------------------------------------------------')
-#     print('Testing the  problem0c  function:')
-#     print('  See the graphics windows that pop up.')
-#     print('--------------------------------------------------')
-#
-#     # TWO tests on ONE window.
-#     title = 'Tests 1 & 2 of problem0c: blue circle + 6 circles;'
-#     title += ' then green circle + 3 circles'
-#     window1 = rg.RoseWindow(650, 300, title)
-#
-#     circle1 = rg.Circle(rg.Point(100, 50), 30)
-#     circle1.fill_color = 'blue'
-#     problem0c(circle1, 6, window1)
-#     window1.continue_on_mouse_click()
-#
-#     circle2 = rg.Circle(rg.Point(75, 200), 75)
-#     circle2.fill_color = 'green'
-#     problem0c(circle2, 3, window1)
-#     window1.close_on_mouse_click()
-#
-#     # A third test on ANOTHER window.
-#     title = 'Test 3 of problem0c:  red circle + 10 circles'
-#     window2 = rg.RoseWindow(600, 200, title)
-#
-#     circle3 = rg.Circle(rg.Point(50, 50), 20)
-#     circle3.fill_color = 'red'
-#     problem0c(circle3, 10, window2)
-#     window2.close_on_mouse_click()
+def run_test_problem0c():
+    """ Tests the   problem0c  function. """
+    print()
+    print('--------------------------------------------------')
+    print('Testing the  problem0c  function:')
+    print('  See the graphics windows that pop up.')
+    print('--------------------------------------------------')
 
+    # TWO tests on ONE window.
+    title = 'Tests 1 & 2 of problem0c: blue circle + 6 circles;'
+    title += ' then green circle + 3 circles'
+    window1 = rg.RoseWindow(650, 300, title)
+
+    circle1 = rg.Circle(rg.Point(100, 50), 30)
+    circle1.fill_color = 'blue'
+    problem0c(circle1, 6, window1)
+    window1.continue_on_mouse_click()
+
+    circle2 = rg.Circle(rg.Point(75, 200), 75)
+    circle2.fill_color = 'green'
+    problem0c(circle2, 3, window1)
+    window1.close_on_mouse_click()
+
+    # A third test on ANOTHER window.
+    title = 'Test 3 of problem0c:  red circle + 10 circles'
+    window2 = rg.RoseWindow(600, 200, title)
+
+    circle3 = rg.Circle(rg.Point(50, 50), 20)
+    circle3.fill_color = 'red'
+    problem0c(circle3, 10, window2)
+    window2.close_on_mouse_click()
 
 def problem0c(circle, n, window):
     """
@@ -354,7 +353,13 @@ def problem0c(circle, n, window):
     #   renders with a half-second pause after rendering.
     ###########################################################################
     # -------------------------------------------------------------------------
-    window.render(0.5)
+    for _ in range(n):
+        x = circle.center.x - (2 * circle.radius)
+        y = circle.center.y
+        circle_2 = rg.Circle(rg.Point(x, y), circle.radius)
+        circle_2.attach_to(window)
+        window.render(.5)
+
 
 ###############################################################################
 # Our tests use the following to print error messages in red.
