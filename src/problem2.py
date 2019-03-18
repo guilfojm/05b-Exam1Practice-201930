@@ -116,7 +116,10 @@ def problem2a(circle, rectangle, window):
     rectangle.attach_to(window)
     window.render()
     window.continue_on_mouse_click()
-    line = rg.Line(rectangle.corner_1, rectangle.corner_2)
+    start = rg.Point(rectangle.corner_2.x, rectangle.corner_1.y)
+    end = rg.Point(rectangle.corner_1.x, rectangle.corner_2.y)
+
+    line = rg.Line(start, end)
     line.attach_to(window)
     window.render()
     window.continue_on_mouse_click()
